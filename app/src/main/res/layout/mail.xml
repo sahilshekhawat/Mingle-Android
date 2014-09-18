@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:padding="25dp">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="20"
+        >
+        <LinearLayout
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="40">
+
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate our Service"
+        android:textSize="20dp"
+        android:layout_gravity="left"
+        android:id="@+id/tview1"
+        android:lineSpacingExtra="20dp"
+        />
+
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar1"
+            android:layout_alignParentTop="true"
+            android:lineSpacingExtra="40dp"
+            android:scaleX="0.8"
+            android:scaleY="0.8"/>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate our Application"
+        android:textSize="20dp"
+        android:layout_gravity="left"
+        android:id="@+id/tview2"
+        android:lineSpacingExtra="10dp"
+        />
+
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar2"
+        android:layout_alignParentTop="true"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:lineSpacingExtra="40dp"/>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comments"
+        android:textSize="20dp"
+        android:layout_gravity="left"
+        android:id="@+id/tview3"
+        android:lineSpacingExtra="10dp"
+        />
+
+
+
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="20"
+            android:id="@+id/editText"
+            android:lineSpacingExtra="30dp"/>
+
+
+
+
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="40">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button1"
+            android:text="Send Email "
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

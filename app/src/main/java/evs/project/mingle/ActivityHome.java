@@ -6,6 +6,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -125,7 +126,16 @@ public class ActivityHome extends Activity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            return true;
+            try {
+
+                Class ourClass = Class.forName("evs.project.mingle.New");
+                Intent ourIntent = new Intent(ActivityHome.this,ourClass);
+                startActivity(ourIntent);
+            }
+            catch (ClassNotFoundException e)
+            {
+                e.printStackTrace();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
