@@ -16,11 +16,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class ActivityHome extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    TextView mTextViewName;
+    TextView mTextViewText;
+    TextView mTextViewTime;
+    ListView mListView;
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -40,6 +50,23 @@ public class ActivityHome extends Activity
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
+
+        mListView = (ListView) findViewById(R.id.homelistview);
+
+        String[] namevalues = new String[] { "Sahil Shekhawat", "Ankur Singh", "Sambhav satija" };
+        String[] textvalues = new String[] { "Hey there! I will be leaving from IIITD to Dwarka", "Fuck you all! I am a wizard", "Fuck yeah! I am Django champ!" };
+        String[] timevalues = new String[] { "19-09-2014", "19-09-2014", "19-09-2014" +
+                "" };
+
+        ArrayList<CustomObject> objects = new ArrayList<CustomObject>();
+
+        for(int i=0;i<namevalues.length;i++){
+            CustomObject object = new CustomObject(namevalues[i], textvalues[i], timevalues[i]);
+            objects.add(object);
+        }
+
+        CustomAdapter customAdapter = new CustomAdapter(this, objects);
+        mListView.setAdapter(customAdapter);
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(

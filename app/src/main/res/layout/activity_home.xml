@@ -12,7 +12,17 @@
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+
+    <ListView
+        android:id="@+id/homelistview"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:dividerHeight="1dp"
+        android:divider="@android:color/darker_gray"
+        android:background="#dedede"/>
+
+    </FrameLayout>
 
     <!-- android:layout_gravity="start" tells DrawerLayout to treat
          this as a sliding drawer on the left side for left-to-right
@@ -27,5 +37,7 @@
         android:layout_gravity="start"
         android:name="evs.project.mingle.NavigationDrawerFragment"
         tools:layout="@layout/fragment_navigation_drawer" />
+
+
 
 </android.support.v4.widget.DrawerLayout>
