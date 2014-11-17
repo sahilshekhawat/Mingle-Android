@@ -76,6 +76,10 @@ public class ActivityHome extends Activity
         //JSONObject jsonObject =  getJSONFromUrl("http://localhost:3000/travels.json");
         //Log.d("@@@@@@@@@@@", jsonObject.toString());
 
+        String[] namevalues = {"Sahil Shekhawat", "Ankur singh", "shambhav", "mor"};
+        String[] textvalues = {"I will go to Dwarka from IIITD", "from IIITD to mumbai", "from amritsar to bhubneshawar", "from london to town"};
+        String[] timevalues = {"2014-09-19","2014-09-19","2014-09-19","2014-09-19"};
+
         ArrayList<CustomObject> objects = new ArrayList<CustomObject>();
 
         for(int i=0;i<namevalues.length;i++){

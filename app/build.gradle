@@ -3,10 +3,9 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 20
     buildToolsVersion "20.0.0"
-
     defaultConfig {
         applicationId "evs.project.mingle"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 20
         versionCode 1
         versionName "1.0"
@@ -17,6 +16,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
@@ -24,4 +25,5 @@ dependencies {
     compile 'com.google.android.gms:play-services:4.4.52'
     compile 'com.android.support:appcompat-v7:20.0.0'
     compile 'com.android.support:support-v4:20.0.0'
+    compile 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
 }

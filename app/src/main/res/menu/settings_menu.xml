@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="AboutUs"
+        android:id="@+id/about"
+
+        />
+    <item
+        android:title="Preferences"
+        android:id="@+id/prfer"
+        android:numericShortcut="2"
+        android:alphabeticShortcut="b"
+        />
+    <item
+        android:title="Contact us"
+        android:id="@+id/contact"
+
+        />
+
+</menu>
