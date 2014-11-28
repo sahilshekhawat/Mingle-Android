@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"
+        android:id="@+id/source"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/Enter date"
+        android:text="@string/src"
+        android:textSize="25sp"
+        />
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="90dp"
+        android:id="@+id/destination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/source"
+        android:text="@string/dest"
+        android:textSize="25sp"
+        />
+
+    <EditText
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/Entersrc"
+        android:layout_weight = "1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:hint="@string/esrc" />
+    <EditText
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="190dp"
+        android:id="@+id/Enterdest"
+        android:layout_weight = "1"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:hint="@string/edest" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/travel"
+        android:text="@string/trav"
+        android:textSize="35dp"
+        android:layout_marginTop="130dp"
+        />
+    <ListView
+    android:id="@+id/list of travels"
+    android:layout_marginTop="185dp"
+    android:layout_marginBottom="130dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        />
+    <TextView
+        android:id="@+id/notravels"
+        android:text="@string/notrav"
+        android:textSize="30dp"
+        android:layout_marginTop="400dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/createtrav"
+        android:layout_marginTop="450dp"
+        android:layout_alignParentRight="true"
+        android:textSize="25dp"
+        />
+</RelativeLayout>

@@ -10,5 +10,21 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Feedback</string>
-
+    <string name="cycle">Hire a Bicycle</string>
+    //HIRE A BICYCLE STRINGS
+    <string name="cycledate">Date:</string>
+    <string name="cycletime">Time:</string>
+    <string name="cyclerequest">Send Request</string>
+    <string name="reqcycletime">Enter Time</string>
+    <string name="reqcycledate">Enter Date</string>
+    <string name="sreq">Send Request</string>
+    //SHARE A TRAVEL STRINGS
+    <string name="src">Source</string>
+    <string name="esrc">Enter Source</string>
+    <string name="dest">Destination</string>
+    <string name="edest">Enter Destination</string>
+    <string name="trav">Available Travels:</string>
+    <string name="notrav">No Travels Found</string>
+    <string name="tav">Yes</string>
+    <string name="createtrav">Create Travel</string>
 </resources>

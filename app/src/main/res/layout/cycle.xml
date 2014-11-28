@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+    <TextView
+        android:layout_marginTop="30dp"
+        android:id="@+id/Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/Enter date"
+        android:text="@string/cycledate"
+        android:textSize="35sp"
+        android:textColor="#D53F62"
+        android:textColorHighlight="#B1EEA5"/>
+    <EditText
+        android:layout_marginTop="30dp"
+        android:id="@+id/Enter date"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:hint="@string/reqcycledate" />
+    <TextView
+        android:layout_marginTop="100dp"
+        android:id="@+id/Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/Enter time"
+        android:text="@string/cycletime"
+        android:textSize="35sp"
+        />
+    <EditText
+        android:layout_marginTop="100dp"
+        android:id="@+id/Enter time"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:hint="@string/reqcycletime" />
+
+    <Button
+        android:layout_width="400dp"
+        android:layout_height="70dp"
+        android:text="@string/sreq"
+        android:textSize="30dp"
+        android:layout_marginTop="250dp"
+        />
+
+</RelativeLayout>
