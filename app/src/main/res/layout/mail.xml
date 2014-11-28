@@ -5,11 +5,7 @@
     android:layout_height="match_parent"
     android:weightSum="100"
     android:padding="25dp">
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="20"
-        >
+
         <LinearLayout
             android:orientation="vertical" android:layout_width="match_parent"
             android:layout_height="fill_parent"
@@ -96,5 +92,5 @@
             />
     </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+
 </LinearLayout>
