@@ -103,7 +103,7 @@ public class ActivityHome extends Activity
         fragmentManager.beginTransaction()
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                 .commit();
-    }
+    } // testing
 
     public void onSectionAttached(int number) {
         switch (number) {
