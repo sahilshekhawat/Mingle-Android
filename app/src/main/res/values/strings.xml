@@ -10,16 +10,15 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Feedback</string>
-<<<<<<< HEAD
     <string name="cycle">Hire a Bicycle</string>
-    //HIRE A BICYCLE STRINGS
+    <!--//HIRE A BICYCLE STRINGS-->
     <string name="cycledate">Date:</string>
     <string name="cycletime">Time:</string>
     <string name="cyclerequest">Send Request</string>
     <string name="reqcycletime">Enter Time</string>
     <string name="reqcycledate">Enter Date</string>
     <string name="sreq">Send Request</string>
-    //SHARE A TRAVEL STRINGS
+    <!--//SHARE A TRAVEL STRINGS-->
     <string name="src">Source</string>
     <string name="esrc">Enter Source</string>
     <string name="dest">Destination</string>
@@ -28,9 +27,6 @@
     <string name="notrav">No Travels Found</string>
     <string name="tav">Yes</string>
     <string name="createtrav">Create Travel</string>
-=======
     <string name="btn_logout_from_google">Switch Account</string>
     <string name="btn_revoke_access">Revoke Access</string>
-
->>>>>>> 6d533108c8b37ed51339f8254eb872110ca4e2b6
 </resources>

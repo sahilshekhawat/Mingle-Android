@@ -10,14 +10,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/Enter date"
+        android:layout_toLeftOf="@+id/Enter_date"
         android:text="@string/cycledate"
         android:textSize="35sp"
         android:textColor="#D53F62"
         android:textColorHighlight="#B1EEA5"/>
     <EditText
         android:layout_marginTop="30dp"
-        android:id="@+id/Enter date"
+        android:id="@+id/Enter_date1"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_alignParentRight="true"
@@ -28,13 +28,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/Enter time"
+        android:layout_toLeftOf="@+id/Enter_time"
         android:text="@string/cycletime"
         android:textSize="35sp"
         />
     <EditText
         android:layout_marginTop="100dp"
-        android:id="@+id/Enter time"
+        android:id="@+id/Enter_time1"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_alignParentRight="true"
