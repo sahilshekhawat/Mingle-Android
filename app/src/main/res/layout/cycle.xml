@@ -17,7 +17,7 @@
         android:textColorHighlight="#B1EEA5"/>
     <EditText
         android:layout_marginTop="30dp"
-        android:id="@+id/Enter_date1"
+        android:id="@+id/Enter_date"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_alignParentRight="true"
@@ -34,7 +34,7 @@
         />
     <EditText
         android:layout_marginTop="100dp"
-        android:id="@+id/Enter_time1"
+        android:id="@+id/Enter_time"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_alignParentRight="true"

@@ -113,6 +113,8 @@ public class LoginActivity extends Activity implements View.OnClickListener,
     private ImageView imgProfilePic;
     private TextView txtName, txtEmail;
     private LinearLayout llProfileLayout;
+    Intent intent = new Intent(this, ActivityHome.class);
+
 
     FloatingActionButton actionButton;
     @Override
@@ -129,7 +131,13 @@ public class LoginActivity extends Activity implements View.OnClickListener,
         llProfileLayout = (LinearLayout) findViewById(R.id.llProfile);
 
         // Button click listeners
-        btnSignIn.setOnClickListener(this);
+        btnSignIn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(intent);
+            }
+        });
         btnSignOut.setOnClickListener(this);
         btnRevokeAccess.setOnClickListener(this);
 
@@ -162,7 +170,7 @@ public class LoginActivity extends Activity implements View.OnClickListener,
      * Button on click listener
      * */
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) {;
         switch (v.getId()) {
             case R.id.btn_sign_in:
                 // Signin button clicked
