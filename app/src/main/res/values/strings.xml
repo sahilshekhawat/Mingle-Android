@@ -29,4 +29,5 @@
     <string name="createtrav">Create Travel</string>
     <string name="btn_logout_from_google">Switch Account</string>
     <string name="btn_revoke_access">Revoke Access</string>
+    <string name="title_activity_kunal">Kunal boss</string>
 </resources>

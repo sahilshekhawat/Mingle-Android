@@ -126,7 +126,7 @@ public class LoginActivity extends Activity implements View.OnClickListener,
     private ImageView imgProfilePic;
     private TextView txtName, txtEmail;
     private LinearLayout llProfileLayout;
-    Intent intent = new Intent(this, ActivityHome.class);
+    //Intent intent = new Intent(this, ActivityHome.class);
 
 
     FloatingActionButton actionButton;
@@ -147,13 +147,7 @@ public class LoginActivity extends Activity implements View.OnClickListener,
         settings = getSharedPreferences(PREFS_NAME, 0);
 
         // Button click listeners
-        btnSignIn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                startActivity(intent);
-            }
-        });
+        btnSignIn.setOnClickListener(this);
         btnSignOut.setOnClickListener(this);
         btnRevokeAccess.setOnClickListener(this);
 
@@ -229,7 +223,12 @@ public class LoginActivity extends Activity implements View.OnClickListener,
             editor.putString("accountName", accountName);
             editor.apply();
             Toast.makeText(this,"Account Name="+accountName, 3000).show();
-            getDataInAsyncTask(SERVER_URL + "/login");
+            //getDataInAsyncTask(SERVER_URL + "/login");
+            //
+            //
+            Intent newActivity = new Intent(this, Kunal.class);
+            startActivity(newActivity);
+
         }
     }
 /*
@@ -548,14 +547,14 @@ public class LoginActivity extends Activity implements View.OnClickListener,
     protected String getData(String url, String postData) {
         String outputData = null;
         try {
-            String cookie = CookieManager.getInstance().getCookie(ActivityMain.ServerURL);
+            String cookie = CookieManager.getInstance().getCookie(SERVER_URL);
             URL urlObject;
             HttpURLConnection urlConn = null;
             try {
                 urlObject = new URL(url);
                 urlConn = (HttpURLConnection) urlObject.openConnection();
-                urlConn.addRequestProperty("Authorization",
-                        "Token token=" + api_key);
+                //urlConn.addRequestProperty("Authorization",
+                //        "Token token=" + api_key);
 
                 urlConn.addRequestProperty("Cookie", cookie);
                 urlConn.setDoOutput(true);
