@@ -1,13 +1,16 @@
 package evs.project.mingle;
 
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.webkit.CookieManager;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.view.View;
@@ -27,6 +30,7 @@ import android.widget.Toast;
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.auth.UserRecoverableAuthException;
+import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
@@ -36,6 +40,8 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -77,6 +83,11 @@ import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by Kapil Khatri on 01-Nov-14.
@@ -85,9 +96,11 @@ import java.io.InputStream;
 public class LoginActivity extends Activity implements View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
-
-
-
+    static final String PREFS_NAME = "UserAccount"; // Shared Preferences instance name
+    SharedPreferences settings;
+    private String accountName;
+    private String SERVER_URL = "";
+    static final int PICK_ACCOUNT_REQUEST = 1; // unique request identifier
     private static final int RC_SIGN_IN = 0;
     // Logcat tag
     private static final String TAG = "MainActivity";
@@ -128,6 +141,9 @@ public class LoginActivity extends Activity implements View.OnClickListener,
         txtEmail = (TextView) findViewById(R.id.txtEmail);
         llProfileLayout = (LinearLayout) findViewById(R.id.llProfile);
 
+        //shared preferences
+        settings = getSharedPreferences(PREFS_NAME, 0);
+
         // Button click listeners
         btnSignIn.setOnClickListener(this);
         btnSignOut.setOnClickListener(this);
@@ -138,12 +154,6 @@ public class LoginActivity extends Activity implements View.OnClickListener,
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this).addApi(Plus.API)
                 .addScope(Plus.SCOPE_PLUS_LOGIN).build();
-
-
-
-
-
-
     }
 
     protected void onStart() {
@@ -166,7 +176,8 @@ public class LoginActivity extends Activity implements View.OnClickListener,
         switch (v.getId()) {
             case R.id.btn_sign_in:
                 // Signin button clicked
-                signInWithGplus();
+                //signInWithGplus();
+                showGoogleAccountPicker();
                 break;
             case R.id.btn_sign_out:
                 // Signout button clicked
@@ -203,6 +214,18 @@ public class LoginActivity extends Activity implements View.OnClickListener,
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PICK_ACCOUNT_REQUEST && resultCode == RESULT_OK) {
+            accountName = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("accountName", accountName);
+            editor.apply();
+            Toast.makeText(this,"Account Name="+accountName, 3000).show();
+            getDataInAsyncTask(SERVER_URL + "/login");
+        }
+    }
+/*
+    @Override
     protected void onActivityResult(int requestCode, int responseCode,
                                     Intent intent) {
         if (requestCode == RC_SIGN_IN) {
@@ -216,22 +239,17 @@ public class LoginActivity extends Activity implements View.OnClickListener,
                 mGoogleApiClient.connect();
             }
         }
-    }
+    }*/
 
     @Override
     public void onConnected(Bundle arg0) {
         mSignInClicked = false;
         Toast.makeText(this, "User is connected!", Toast.LENGTH_LONG).show();
-
-
         // Get user's information
         getProfileInformation();
-
         // Update the UI after signin
         updateUI(true);
         delay(2000);
-
-
     }
 
     private void delay(int i) {
@@ -269,8 +287,6 @@ public class LoginActivity extends Activity implements View.OnClickListener,
             btnSignOut.setVisibility(View.VISIBLE);
             btnRevokeAccess.setVisibility(View.VISIBLE);
             llProfileLayout.setVisibility(View.VISIBLE);
-
-
 //
             ImageView icon = new ImageView(this); // Create an icon
             icon.setImageDrawable(getResources().getDrawable(R.drawable.plus));
@@ -487,5 +503,82 @@ public class LoginActivity extends Activity implements View.OnClickListener,
 
                     });
         }
+    }
+
+    private void showGoogleAccountPicker() {
+        Intent googlePicker = AccountPicker.newChooseAccountIntent(null, null,
+                new String[] { GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE }, true,
+                null, null, null, null);
+        startActivityForResult(googlePicker, PICK_ACCOUNT_REQUEST);
+    }
+    void getDataInAsyncTask(final String url, final String postData,
+                            final String callback) {
+
+        AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
+
+            @Override
+            protected void onPreExecute() {
+            }
+
+            @Override
+            protected String doInBackground(Void... params) {
+                return getData(url, postData);
+            }
+
+            @Override
+            protected void onPostExecute(String v) {
+
+            }
+
+        };
+        task.execute();
+    }
+
+
+
+
+    protected String getData(String url, String postData) {
+        String outputData = null;
+        try {
+            String cookie = CookieManager.getInstance().getCookie(ActivityMain.ServerURL);
+            URL urlObject;
+            HttpURLConnection urlConn = null;
+            try {
+                urlObject = new URL(url);
+                urlConn = (HttpURLConnection) urlObject.openConnection();
+                urlConn.addRequestProperty("Authorization",
+                        "Token token=" + api_key);
+
+                urlConn.addRequestProperty("Cookie", cookie);
+                urlConn.setDoOutput(true);
+                if (postData != null) {
+                    OutputStreamWriter wr = new OutputStreamWriter(
+                            urlConn.getOutputStream());
+                    wr.write(postData);
+                    wr.flush();
+                }
+                InputStream in = new BufferedInputStream(urlConn.getInputStream());
+                BufferedReader buffin = new BufferedReader(
+                        new InputStreamReader(in));
+                StringBuilder responseStrBuilder = new StringBuilder();
+                while ((outputData = buffin.readLine()) != null) {
+                    responseStrBuilder.append(outputData);
+                }
+                outputData = responseStrBuilder.toString();
+                Log.d("Response code", urlConn.getResponseCode() + "    " + url);
+            } catch (MalformedURLException e1) {
+
+                e1.printStackTrace();
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            } finally {
+                if (urlConn != null)
+                    urlConn.disconnect();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return outputData;
     }
 }
